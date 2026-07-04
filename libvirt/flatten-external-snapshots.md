@@ -2,7 +2,7 @@
 
 ## Why I wrote this
 
-I use a lot of VMs, and I take a lot of snapshots. Over time, some of my VMs end up with long external snapshot chains, which makes the VM storage messy and harder to manage.
+I use a lot of VMs (virtual machines), and I take a lot of snapshots. Over time, some of my VMs end up with long external snapshot chains, which makes the VM storage messy and harder to manage.
 
 This guide is my workflow for flattening a VM’s current state into a single clean `.qcow2` image.
 
