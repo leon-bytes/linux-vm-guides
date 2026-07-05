@@ -77,7 +77,7 @@ shut off
 To check the active disk image your VM is currently using:
 
 ```bash
-sudo virsh domblklist debian-dev --details
+sudo virsh domblklist debian-dev
 ```
 
 The `vda` source is the active disk image. If your VM is currently using an external snapshot, this should be the top snapshot you flatten from.
@@ -216,10 +216,10 @@ shut off
 First, confirm the VM is pointed at the flattened image:
 
 ```bash
-sudo virsh domblklist debian-dev --details
+sudo virsh domblklist debian-dev
 ```
 
-You should see the disk source pointing to:
+You should see the `vda` disk source pointing to:
 
 ```text
 /var/lib/libvirt/images/debian-dev-flattened.qcow2
@@ -234,21 +234,21 @@ sudo bash -c 'ls -lh /var/lib/libvirt/images/debian-dev.snapshot*'
 If that only shows the old snapshot files you want to remove, delete them:
 
 ```bash
-sudo bash -c 'rm -Iv /var/lib/libvirt/images/debian-dev.snapshot*'
+sudo bash -c 'rm -iv /var/lib/libvirt/images/debian-dev.snapshot*'
 ```
 
-Enter 'y' to proceed with deletion.
+Enter 'y' for each file to proceed with deletion.
 
-Now remove the old original/base disk image separately:
+Now remove the old original/base disk image:
 
 ```bash
-sudo rm -Iv /var/lib/libvirt/images/debian-dev.qcow2
+sudo rm -v /var/lib/libvirt/images/debian-dev.qcow2
 ```
 
 After that, check what remains:
 
 ```bash
-sudo ls -lh /var/lib/libvirt/images/ | grep -i "debian-dev"
+sudo ls /var/lib/libvirt/images/ | grep -i 'debian-dev'
 ```
 
 You should now only see the new flattened disk image:
